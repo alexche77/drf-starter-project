@@ -7,15 +7,8 @@ services:
 
 jobs:
   include:
-    - stage: build docker image
+    - stage: build-lint-and-test
+      name: Build, lint and Test
       before_script: pip install docker-compose
       script:
-        - docker-compose build
-    - stage: lint
-      before_script: pip install docker-compose
-      script:
-        - docker-compose --env-file .env.dev run app flake8
-    - stage: test
-      before_script: pip install docker-compose
-      script:
-        - docker-compose --env-file .env.dev run app sh -c "pytest --cov app"
+        - ci-cd/ci.sh
