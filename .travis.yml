@@ -5,7 +5,15 @@ python:
 services:
   - docker
 
-before_script: pip install docker-compose
-
-script:
-  - docker-compose --env-file .env.dev run app sh -c "pytest --cov app"
+jobs:
+  include:
+    - stage: build docker image
+      before_script: pip install docker-compose
+      script:
+        - docker-compose build
+    - stage: lint
+      script:
+        - docker-compose --env-file .env.dev run app flake8
+    - stage: test
+      script:
+        - docker-compose --env-file .env.dev run app sh -c "pytest --cov app"
