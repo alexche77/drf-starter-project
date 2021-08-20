@@ -1,0 +1,8 @@
+[run]
+omit =
+    app/asgi.py
+    app/wsgi.py
+    **/urls.py
+    **/apps.py
+    **/tests.py
+    **/migrations/*

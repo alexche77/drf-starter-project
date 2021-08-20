@@ -2,3 +2,9 @@ Django==3.2.6
 psycopg2-binary==2.9.1
 gunicorn==20.1.0
 djangorestframework==3.12.4
+dj-rest-auth==2.1.11
+flake8==3.9.2
+pytest==6.2.4
+pytest-django==4.4.0
+coverage==5.5
+pytest-cov==2.12.1
