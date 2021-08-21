@@ -46,12 +46,9 @@ INSTALLED_APPS = [
 
     # 3rd party apps
     'rest_framework',
-    'rest_framework.authtoken',
-    'dj_rest_auth',
 
     # Project apps
     'core',
-    'users',
 ]
 
 MIDDLEWARE = [
@@ -189,9 +186,4 @@ LOGGING = {
             'propagate': False,
         },
     },
-}
-
-
-REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'users.serializers.MyselfSerializer',
 }
