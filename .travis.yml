@@ -1,0 +1,14 @@
+language: python
+python:
+  - "3.9"
+
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: build-lint-and-test
+      name: Build, lint and Test
+      before_script: pip install docker-compose
+      script:
+        - ci-cd/ci.sh

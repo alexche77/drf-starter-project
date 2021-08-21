@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  app:
+    build: ./app
+    command: gunicorn app.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - ./app/:/usr/src/app/
+    env_file: 
+      - ./.env.dev
+    ports:
+      - 8000:8000
+    depends_on: 
+      - db
+  db:     
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file: 
+      - ./.env.dev
+    
+volumes:
+  postgres_data:
